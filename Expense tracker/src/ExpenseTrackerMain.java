@@ -30,7 +30,8 @@ public class ExpenseTrackerMain {
                 input.nextLine();
                 System.out.print("Enter amount: ");
                 float amount = input.nextFloat();
-                System.out.print("Enter source");
+                input.nextLine();
+                System.out.print("Enter source: ");
                 String source = input.nextLine();
                 int status = tracker.addIncome(amount, source);
                 if (status == 0) {

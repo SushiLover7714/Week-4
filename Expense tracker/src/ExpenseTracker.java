@@ -32,12 +32,13 @@ public class ExpenseTracker {
 
         // Format the current date as a string
         String dateString = currentDate.format(formatter);
-        String newIncomeRecordLine = source + ":" + String.valueOf(amount) + "," + dateString;
+        String newIncomeRecordLine = "\n"+source + ":" + String.valueOf(amount) + "," + dateString;
+        System.out.println(newIncomeRecordLine);
         try {
-            FileWriter fileWriter = new FileWriter(incomeRecordsFilePath);
+            FileWriter fileWriter = new FileWriter(incomeRecordsFilePath,true);
             BufferedWriter writer = new BufferedWriter(fileWriter);
             writer.append(newIncomeRecordLine);
-
+            writer.close();
             return 0;
         }
 

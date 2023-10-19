@@ -36,7 +36,7 @@ public class User {
                 date = expenseRecordArr[2];
                 expenseRecord = new ExpenseRecord(category, date, price);
                 expenseRecords.add(expenseRecord);
-                expenseRecord.displayExpenseRecord();
+                //expenseRecord.displayExpenseRecord();
             }
             reader.close();
             fileReader = new FileReader(incomeRecordsFilePath);
@@ -49,7 +49,7 @@ public class User {
                 date = expenseRecordArr[2];
                 incomeRecord = new IncomeRecord(price, category, date);
                 incomeRecords.add(incomeRecord);
-                incomeRecord.displayIncomeRecord();
+                //incomeRecord.displayIncomeRecord();
             }
         } catch (IOException e) {
             e.printStackTrace();

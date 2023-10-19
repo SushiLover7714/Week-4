@@ -9,4 +9,8 @@ public class ExpenseTracker {
         this.incomeRecordsFilePath = incomeRecordsFilePath;
         User user = new User(userDataFilePath, expenseRecordsFilePath, incomeRecordsFilePath);
     }
+    public int addIncome(float amount,String source,User user){
+        
+        return 0;
+    }
 }

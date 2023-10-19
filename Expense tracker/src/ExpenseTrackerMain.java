@@ -14,6 +14,10 @@ public class ExpenseTrackerMain {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int option;
+        float price;
+        float amount;
+        String source;
+        int status;
         String userDataFilePath = ".\\Expense tracker\\data\\usr_data.txt";
         String expenseRecordsFilePath = ".\\Expense tracker\\data\\expense_records.txt";
         String incomeRecordsFilePath = ".\\Expense tracker\\data\\income_record.txt";
@@ -29,11 +33,11 @@ public class ExpenseTrackerMain {
             case 1:
                 input.nextLine();
                 System.out.print("Enter amount: ");
-                float amount = input.nextFloat();
+                amount = input.nextFloat();
                 input.nextLine();
                 System.out.print("Enter source: ");
-                String source = input.nextLine();
-                int status = tracker.addIncome(amount, source);
+                source = input.nextLine();
+                status = tracker.addIncome(amount, source);
                 if (status == 0) {
                     System.out.println("Operation Successful!");
                 } else if (status == 1) {
@@ -43,7 +47,17 @@ public class ExpenseTrackerMain {
                 break;
 
             case 2:
-
+                input.nextLine();
+                System.out.print("Enter Price: ");
+                price = input.nextFloat();
+                System.out.print("Enter source: ");
+                source = input.nextLine();
+                status = tracker.addExpense(price, source);
+                if (status == 0) {
+                    System.out.println("Operation Successful!");
+                } else if (status == 1) {
+                    System.out.println("Operation not successful");
+                }
                 break;
 
             case 3:

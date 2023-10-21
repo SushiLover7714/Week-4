@@ -22,10 +22,10 @@ public class ExpenseTrackerMain {
         String expenseRecordsFilePath = ".\\Expense tracker\\data\\expense_records.txt";
         String incomeRecordsFilePath = ".\\Expense tracker\\data\\income_record.txt";
         ExpenseTracker tracker = new ExpenseTracker(userDataFilePath, expenseRecordsFilePath, incomeRecordsFilePath);
-        System.out.println("1. Add income: ");
-        System.out.println("2. Add expense: ");
-        System.out.println("3. Check bank statistics: ");
-        System.out.println("4. Exit: ");
+        System.out.println("1. Add income ");
+        System.out.println("2. Add expense ");
+        System.out.println("3. View expense breakdown by % ");
+        System.out.println("4. Exit ");
         System.out.print("Enter option: ");
         option = input.nextInt();
         switch (option) {
@@ -50,6 +50,7 @@ public class ExpenseTrackerMain {
                 input.nextLine();
                 System.out.print("Enter Price: ");
                 price = input.nextFloat();
+                input.nextLine();
                 System.out.print("Enter source: ");
                 source = input.nextLine();
                 status = tracker.addExpense(price, source);
@@ -61,7 +62,7 @@ public class ExpenseTrackerMain {
                 break;
 
             case 3:
-
+                tracker.viewExpensePercentage();
                 break;
 
             case 4:

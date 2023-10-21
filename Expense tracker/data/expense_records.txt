@@ -5,5 +5,6 @@ Wi-Fi:30,17/10/23
 Social:100,23/10/23
 Cosmetics:20,23/10/23
 Gym membership:10,25/10/23
-
-:100.0,19/10/2023
+Transportation:15,15/10/23
+Gym membership:20,1/11/23
+Education:2300,5/11/23

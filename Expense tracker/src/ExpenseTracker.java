@@ -80,4 +80,68 @@ public class ExpenseTracker {
             return 1;
         }
     }
+
+    public void viewExpensePercentage() {
+        String category;
+        float price;
+        String date;
+        String line;
+        String[] expenseRecordArr;
+        ArrayList<ExpenseRecord> expenseRecords = new ArrayList<ExpenseRecord>();
+        try {
+            FileReader fileReader = new FileReader(expenseRecordsFilePath);
+            BufferedReader reader = new BufferedReader(fileReader);
+            while ((line = reader.readLine()) != null) {
+                expenseRecordArr = line.split("[:,]");
+                category = expenseRecordArr[0];
+                price = Float.parseFloat(expenseRecordArr[1]);
+                date = expenseRecordArr[2];
+                expenseRecords.add(new ExpenseRecord(category, date, price));
+            }
+            ArrayList<String> categoryList = new ArrayList<String>();
+            for (int i = 0; i < expenseRecords.size(); i++) {
+                categoryList.add(expenseRecords.get(i).getCategory());
+            }
+            ArrayList<String> uniqueCategoryList = new ArrayList<>();
+            uniqueCategoryList = getUniqueCategories(categoryList);
+            float totalExpense = 0.0f;
+            float categoryExpense = 0.0f;
+            for (int i = 0; i < expenseRecords.size(); i++) {
+                totalExpense += expenseRecords.get(i).getPrice();
+            }
+            for (int i = 0; i < uniqueCategoryList.size(); i++) {
+                categoryExpense = 0.0f;
+                for (int j = 0; j < expenseRecords.size(); i++) {
+                    if (uniqueCategoryList.get(i).equalsIgnoreCase(expenseRecords.get(j).getCategory())) {
+                        categoryExpense += expenseRecords.get(j).getPrice();
+                    }
+                }
+                System.out
+                        .println(uniqueCategoryList.get(i) + " : " + ((categoryExpense / totalExpense) * 100) + " % ");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<String> getUniqueCategories(ArrayList<String> categoryList) {
+        String category;
+        boolean isUnique;
+        ArrayList<String> uniqueCategoryList = new ArrayList<String>();
+        uniqueCategoryList.add(categoryList.get(0));
+        for (int i = 0; i < categoryList.size(); i++) {
+            category = categoryList.get(i);
+            isUnique = true;
+            for (int j = 0; j < uniqueCategoryList.size(); j++) {
+                if (category.equalsIgnoreCase(uniqueCategoryList.get(j))) {
+                    isUnique = false;
+                    break;
+                }
+                if (isUnique == true) {
+                    uniqueCategoryList.add(category);
+                }
+            }
+        }
+        return uniqueCategoryList;
+    }
 }

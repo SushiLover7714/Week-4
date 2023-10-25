@@ -119,6 +119,7 @@ public class ExpenseTracker {
                 System.out
                         .println(uniqueCategoryList.get(i) + " : " + ((categoryExpense / totalExpense) * 100) + " % ");
             }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -131,6 +132,7 @@ public class ExpenseTracker {
         String line;
         String[] incomeRecordArr;
         ArrayList<IncomeRecord> incomeRecords = new ArrayList<IncomeRecord>();
+
         try {
             FileReader fileReader = new FileReader(incomeRecordsFilePath);
             BufferedReader reader = new BufferedReader(fileReader);
@@ -162,6 +164,7 @@ public class ExpenseTracker {
                 System.out
                         .println(uniqueCategoryList.get(i) + " : " + ((categoryIncome / totalIncome) * 100) + " % ");
             }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

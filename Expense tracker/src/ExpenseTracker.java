@@ -109,6 +109,8 @@ public class ExpenseTracker {
             for (int i = 0; i < expenseRecords.size(); i++) {
                 totalExpense += expenseRecords.get(i).getPrice();
             }
+            System.out.println("uniquecategory list size : "+uniqueCategoryList.size());
+            System.out.println("expense records size : "+expenseRecords.size());
             for (int i = 0; i < uniqueCategoryList.size(); i++) {
                 categoryExpense = 0.0f;
                 for (int j = 0; j < expenseRecords.size(); j++) {
@@ -154,6 +156,8 @@ public class ExpenseTracker {
             for (int i = 0; i < incomeRecords.size(); i++) {
                 totalIncome += incomeRecords.get(i).getBalance();
             }
+            System.out.println("UniqueCategory size : "+uniqueCategoryList.size());
+            System.out.println("income records size : "+incomeRecords.size());
             for (int i = 0; i < uniqueCategoryList.size(); i++) {
                 categoryIncome = 0.0f;
                 for (int j = 0; j < incomeRecords.size(); j++) {
@@ -175,7 +179,7 @@ public class ExpenseTracker {
         boolean isUnique;
         ArrayList<String> uniqueCategoryList = new ArrayList<String>();
         uniqueCategoryList.add(categoryList.get(0));
-        for (int i = 0; i < categoryList.size(); i++) {
+        for (int i = 1; i < categoryList.size(); i++) {
             category = categoryList.get(i);
             isUnique = true;
             for (int j = 0; j < uniqueCategoryList.size(); j++) {
@@ -183,11 +187,12 @@ public class ExpenseTracker {
                     isUnique = false;
                     break;
                 }
-                if (isUnique == true) {
-                    uniqueCategoryList.add(category);
-                }
+            }
+            if (isUnique==true) {
+                uniqueCategoryList.add(category);
             }
         }
         return uniqueCategoryList;
     }
+
 }

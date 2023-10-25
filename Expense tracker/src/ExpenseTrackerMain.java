@@ -27,7 +27,7 @@ public class ExpenseTrackerMain {
         System.out.println("3. View expense breakdown by % ");
         System.out.println("4. View income breaker by % ");
         System.out.println("5: Exit ");
-        System.out.println("Enter option: ");
+        System.out.print("Enter option: ");
         option = input.nextInt();
         switch (option) {
 

@@ -15,14 +15,6 @@ public class IncomeRecord {
         System.out.println(balance);
     }
 
-}
-
- public ExpenseRecord(String category, String date, float price) {
-        this.category = category;
-        this.date = date;
-        this.price = price;
-    }
-
     public String getCategory() {
         return this.category;
     }
@@ -31,8 +23,8 @@ public class IncomeRecord {
         return this.date;
     }
 
-    public float getPrice() {
-        return this.price;
+    public float getBalance() {
+        return this.balance;
     }
 
     public void setCategory(String category) {
@@ -43,6 +35,7 @@ public class IncomeRecord {
         this.date = date;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setBalance(float price) {
+        this.balance = price;
     }
+}

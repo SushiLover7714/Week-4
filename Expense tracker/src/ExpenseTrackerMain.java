@@ -26,7 +26,8 @@ public class ExpenseTrackerMain {
         System.out.println("2. Add expense ");
         System.out.println("3. View expense breakdown by % ");
         System.out.println("4. View income breaker by % ");
-        System.out.println("5: Exit ");
+        System.out.println("5: View expense records within date range ");
+        System.out.println("6. Exit");
         System.out.print("Enter option: ");
         option = input.nextInt();
         switch (option) {
@@ -71,6 +72,18 @@ public class ExpenseTrackerMain {
                 break;
 
             case 5:
+                input.nextLine();
+                String startDate;
+                String endDate;
+                System.out.println("Enter start date: ");
+                startDate = input.nextLine();
+                System.out.println("Enter end date: ");
+                endDate = input.nextLine();
+                tracker.viewExpenseRecordWithinDateRange(startDate, endDate);
+
+                break;
+
+            case 6:
 
                 break;
         }

@@ -1,10 +1,10 @@
-Transportation:10,14/10/23
-Education:2000,15/10/23
-Electricity:150,17/10/23
-Wi-Fi:30,17/10/23
-Social:100,23/10/23
-Cosmetics:20,23/10/23
-Gym membership:10,25/10/23
-Transportation:15,15/10/23
-Gym membership:20,1/11/23
-Education:2300,5/11/23
+Transportation:10,14/10/2023
+Education:2000,15/10/2023
+Electricity:150,17/10/2023
+Wi-Fi:30,17/10/2023
+Social:100,23/10/2023
+Cosmetics:20,23/10/2023
+Gym membership:10,25/10/2023
+Transportation:15,15/10/2023
+Gym membership:20,1/11/2023
+Education:2300,5/11/2023

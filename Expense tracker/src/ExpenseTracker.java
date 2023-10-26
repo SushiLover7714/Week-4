@@ -109,8 +109,8 @@ public class ExpenseTracker {
             for (int i = 0; i < expenseRecords.size(); i++) {
                 totalExpense += expenseRecords.get(i).getPrice();
             }
-            System.out.println("uniquecategory list size : "+uniqueCategoryList.size());
-            System.out.println("expense records size : "+expenseRecords.size());
+            System.out.println("uniquecategory list size : " + uniqueCategoryList.size());
+            System.out.println("expense records size : " + expenseRecords.size());
             for (int i = 0; i < uniqueCategoryList.size(); i++) {
                 categoryExpense = 0.0f;
                 for (int j = 0; j < expenseRecords.size(); j++) {
@@ -156,8 +156,8 @@ public class ExpenseTracker {
             for (int i = 0; i < incomeRecords.size(); i++) {
                 totalIncome += incomeRecords.get(i).getBalance();
             }
-            System.out.println("UniqueCategory size : "+uniqueCategoryList.size());
-            System.out.println("income records size : "+incomeRecords.size());
+            System.out.println("UniqueCategory size : " + uniqueCategoryList.size());
+            System.out.println("income records size : " + incomeRecords.size());
             for (int i = 0; i < uniqueCategoryList.size(); i++) {
                 categoryIncome = 0.0f;
                 for (int j = 0; j < incomeRecords.size(); j++) {
@@ -188,11 +188,48 @@ public class ExpenseTracker {
                     break;
                 }
             }
-            if (isUnique==true) {
+            if (isUnique == true) {
                 uniqueCategoryList.add(category);
             }
         }
         return uniqueCategoryList;
     }
 
+    public void viewExpenseRecordWithinDateRange(String startDateStr, String endDateStr) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/m/yyyy");
+        LocalDate startDate = LocalDate.parse(startDateStr, formatter);
+        LocalDate endDate = LocalDate.parse(endDateStr, formatter);
+        LocalDate date;
+        try {
+            FileReader fileReader = new FileReader(expenseRecordsFilePath);
+            BufferedReader reader = new BufferedReader(fileReader);
+            String line;
+            String dateStr;
+            String category;
+            float price;
+            String[] expenseRecordArr;
+            ExpenseRecord expenseRecord;
+            ArrayList<ExpenseRecord> expenseRecords = new ArrayList<ExpenseRecord>();
+            while ((line = reader.readLine()) != null) {
+                expenseRecordArr = line.split("[:,]");
+                category = expenseRecordArr[0];
+                price = Float.parseFloat(expenseRecordArr[1]);
+                dateStr = expenseRecordArr[2];
+                expenseRecord = new ExpenseRecord(category, dateStr, price);
+                expenseRecords.add(expenseRecord);
+
+            }
+            for (int i = 0; i < expenseRecords.size(); i++) {
+                dateStr = expenseRecords.get(i).getDate();
+                date = LocalDate.parse(dateStr, formatter);
+                if (date.isAfter(startDate) && date.isBefore(endDate)) {
+                    expenseRecords.get(i).displayExpenseRecord();
+                }
+            }
+        }
+
+        catch (IOException e) {
+
+        }
+    }
 }

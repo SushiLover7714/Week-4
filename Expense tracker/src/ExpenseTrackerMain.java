@@ -75,9 +75,9 @@ public class ExpenseTrackerMain {
                 input.nextLine();
                 String startDate;
                 String endDate;
-                System.out.println("Enter start date: ");
+                System.out.print("Enter start date: ");
                 startDate = input.nextLine();
-                System.out.println("Enter end date: ");
+                System.out.print("Enter end date: ");
                 endDate = input.nextLine();
                 tracker.viewExpenseRecordWithinDateRange(startDate, endDate);
 

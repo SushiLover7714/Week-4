@@ -235,12 +235,12 @@ public class ExpenseTracker {
     }
 
     public void viewIncomeRecordWithinDateRange(String startDateStr, String endDateStr) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
         LocalDate startDate = LocalDate.parse(startDateStr, formatter);
         LocalDate endDate = LocalDate.parse(endDateStr, formatter);
         LocalDate date;
         try {
-            FileReader fileReader = new FileReader(expenseRecordsFilePath);
+            FileReader fileReader = new FileReader(incomeRecordsFilePath);
             BufferedReader reader = new BufferedReader(fileReader);
             String line;
             String dateStr;
@@ -266,6 +266,7 @@ public class ExpenseTracker {
                     incomeRecords.get(i).displayIncomeRecord();
                 }
             }
+            reader.close();
         }
 
         catch (IOException e) {

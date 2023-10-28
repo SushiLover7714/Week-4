@@ -22,6 +22,7 @@ public class ExpenseTrackerMain {
         String expenseRecordsFilePath = ".\\Expense tracker\\data\\expense_records.txt";
         String incomeRecordsFilePath = ".\\Expense tracker\\data\\income_record.txt";
         ExpenseTracker tracker = new ExpenseTracker(userDataFilePath, expenseRecordsFilePath, incomeRecordsFilePath);
+        while(true){
         System.out.println("1. Add income ");
         System.out.println("2. Add expense ");
         System.out.println("3. View expense breakdown by % ");
@@ -95,9 +96,9 @@ public class ExpenseTrackerMain {
                 break;
 
             case 7:
-
-                break;
+                System.exit(0);
         }
+    }
     }
 
 }

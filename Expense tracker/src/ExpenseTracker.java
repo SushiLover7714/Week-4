@@ -11,7 +11,6 @@ import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-
 public class ExpenseTracker {
     String userDataFilePath;
     String expenseRecordsFilePath;
@@ -223,7 +222,8 @@ public class ExpenseTracker {
             for (int i = 0; i < expenseRecords.size(); i++) {
                 dateStr = expenseRecords.get(i).getDate();
                 date = LocalDate.parse(dateStr, formatter);
-                if (date.isAfter(startDate) && date.isBefore(endDate)) {
+                if ((date.isAfter(startDate) && date.isBefore(endDate)) || date.equals(startDate)
+                        || date.equals(endDate)) {
                     expenseRecords.get(i).displayExpenseRecord();
                 }
             }
@@ -232,5 +232,45 @@ public class ExpenseTracker {
         catch (IOException e) {
 
         }
+    }
+
+    public void viewIncomeRecordWithinDateRange(String startDateStr, String endDateStr) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate startDate = LocalDate.parse(startDateStr, formatter);
+        LocalDate endDate = LocalDate.parse(endDateStr, formatter);
+        LocalDate date;
+        try {
+            FileReader fileReader = new FileReader(expenseRecordsFilePath);
+            BufferedReader reader = new BufferedReader(fileReader);
+            String line;
+            String dateStr;
+            String category;
+            float balance;
+            String[] incomeRecordArr;
+            IncomeRecord incomeRecord;
+            ArrayList<IncomeRecord> incomeRecords = new ArrayList<IncomeRecord>();
+            while ((line = reader.readLine()) != null) {
+                incomeRecordArr = line.split("[:,]");
+                category = incomeRecordArr[0];
+                balance = Float.parseFloat(incomeRecordArr[1]);
+                dateStr = incomeRecordArr[2];
+                incomeRecord = new IncomeRecord(balance, category, dateStr);
+                incomeRecords.add(incomeRecord);
+
+            }
+            for (int i = 0; i < incomeRecords.size(); i++) {
+                dateStr = incomeRecords.get(i).getDate();
+                date = LocalDate.parse(dateStr, formatter);
+                if ((date.isAfter(startDate) && date.isBefore(endDate)) || date.equals(startDate)
+                        || date.equals(endDate)) {
+                    incomeRecords.get(i).displayIncomeRecord();
+                }
+            }
+        }
+
+        catch (IOException e) {
+
+        }
+
     }
 }

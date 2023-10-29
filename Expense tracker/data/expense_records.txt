@@ -8,3 +8,4 @@ Gym membership:10,25/10/2023
 Transportation:15,15/10/2023
 Gym membership:20,1/11/2023
 Education:2300,5/11/2023
+Electricity:130.0,28/10/2023
